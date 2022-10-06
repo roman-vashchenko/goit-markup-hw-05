@@ -5,6 +5,7 @@
   --secondary-color: #ffffff;
   --color-icon: #afb1b8;
   ---background-color: #f5f4fa;
+  --trn-to-all: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 h1,
@@ -138,6 +139,7 @@ body {
   color: var(--title-text-color);
 
   display: block;
+  transition: color var(--trn-to-all);
 }
 
 .header-item-link:hover,
@@ -153,11 +155,13 @@ body {
   color: var(--text-color);
 
   display: block;
+  transition: color var(--trn-to-all);
 }
 
 .icon-header-contats {
   margin-right: 10px;
   fill: currentColor;
+  transition: fill var(--trn-to-all);
 }
 
 .header-item-mail:hover,
@@ -213,6 +217,7 @@ body {
   letter-spacing: 0.06em;
   color: var(--secondary-color);
   background: var(--accent-color);
+  transition: background-color var(--trn-to-all);
 }
 
 .hero-btn:hover,
@@ -307,7 +312,6 @@ body {
   background-color: rgba(47, 48, 58, 0.8);
 }
 
-
 /* Our team */
 
 .team {
@@ -379,6 +383,7 @@ body {
   align-items: center;
   border-radius: 50%;
   color: var(--color-icon);
+  transition: background-color var(--trn-to-all), color var(--trn-to-all);
 }
 
 .icon-link {
@@ -424,6 +429,7 @@ body {
   border: 1px solid var(--color-icon);
   border-radius: 4px;
   color: var(--color-icon);
+  transition: border-color var(--trn-to-all), color var(--trn-to-all);
 }
 
 .icon-coustomers-link {
@@ -483,6 +489,7 @@ body {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
+  transition: color var(--trn-to-all);
 }
 .footer-mail {
   display: block;
@@ -527,6 +534,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color var(--trn-to-all);
 }
 
 .icon-footer-link {
@@ -551,7 +559,9 @@ body {
 
 .backdrop.is-hidden {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
+ 
 }
 
 .modal {
@@ -563,21 +573,29 @@ body {
   min-width: 528px;
   min-height: 581px;
   padding: 8px;
-
   background-color: var(--secondary-color);
-  text-align: right;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--trn-to-all);
 }
 
-.modal-close {
-  padding: 0;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
 }
 
-.icon-closemodal{
-
+.btn-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary-color);
 }
+
 
 /* Portfolio */
 
@@ -608,6 +626,7 @@ body {
   letter-spacing: 0.03em;
   color: var(--title-text-color);
   background: #f5f4fa;
+  transition: color var(--trn-to-all), background-color var(--trn-to-all), box-shadow var(--trn-to-all);
 }
 
 .filter-btn:hover,
@@ -623,6 +642,10 @@ body {
   gap: 30px;
 }
 
+.project-link {
+  transition: box-shadow var(--trn-to-all);
+}
+
 .project-link:hover,
 .project-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
@@ -631,37 +654,30 @@ body {
 
 .project-thumb {
   position: relative;
-}
-
-.project-thumb::before {
-  content: "";
-  position: absolute;
-  width: 370px;
-  height: 294px;
-  background-color: rgba(33, 150, 243, 0.9);
-  opacity: 0;
+  overflow: hidden;
 }
 
 .project-animation-text {
   position: absolute;
-  top: 63px;
-  left: 24px;
+  top: 0;
+  left: 0;
 
-  width: 322px;
+  padding: 63px 24px;
+  height: 100%;
 
   font-weight: 400;
   font-size: 18px;
   line-height: 1.56;
   letter-spacing: 0.03em;
   color: var(--secondary-color);
-  opacity: 0;
+  background-color: rgba(33, 150, 243, 0.9);
+  transform: translateY(100%);
+  transition: transform var(--trn-to-all);
 }
 
-.project-list-item:hover .project-thumb::before,
-.project-list-item:hover .project-animation-text,
-.project-link:focus .project-thumb::before,
+.project-link:hover .project-animation-text,
 .project-link:focus .project-animation-text {
-  opacity: 1;
+  transform: translateY(0);
 }
 
 
@@ -687,5 +703,3 @@ body {
   letter-spacing: 0.03em;
   color: var(--text-color);
 }
-
-
