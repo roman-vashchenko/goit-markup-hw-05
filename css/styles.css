@@ -173,7 +173,7 @@ body {
   color: var(--title-text-color);
 
   display: block;
-  transition: color var(--trn-to-all);
+  transition: color var(--transition-time) var(--transition-function);
 }
 
 .header-item-link:hover,
