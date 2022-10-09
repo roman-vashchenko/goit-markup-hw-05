@@ -590,6 +590,7 @@ body {
   height: 100%;
 
   background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity var(--transition-time) var(--transition-function), visibility var(--transition-time) var(--transition-function);
 }
 
 .backdrop.is-hidden {
@@ -611,6 +612,7 @@ body {
   transform: translate(-50%, -50%) scale(1);
   transition: transform var(--transition-time) var(--transition-function);
 }
+
 
 .backdrop.is-hidden .modal {
   transform: translate(-50%, -50%) scale(0);
